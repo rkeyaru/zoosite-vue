@@ -1,0 +1,3 @@
+<template>
+    Show Animals
+</template>
