@@ -4,7 +4,7 @@
     <div class="col-sm-12 col-lg-6  p-0 leftsign">
       <img src="../assets/img/image.jpg" class="w-100 h-100 m-0 " alt="">
     </div>
-    <div class="col-sm-12 col-lg-6   bg-light   border rounded-bottom">
+    <div class="col-sm-12 col-lg-6    bg-light   border rounded-bottom">
 
       <div class="row   justify-content-center ">
         <form @submit.prevent="onSubmit" class="w-75 mt-5 " id="signup">
@@ -29,7 +29,7 @@
             <input type="password" v-model="form.password" class="form-control" id="password">
 
           </div>
-          <button type="submit" class="btn btn-primary rounded-pill">Submit</button>
+          <button type="submit" class="btn btn-primary rounded-pill mb-3">Submit</button>
         </form>
       </div>
     </div>

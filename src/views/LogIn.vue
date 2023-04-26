@@ -1,9 +1,9 @@
  
 <template>
-  <div class="row justify-content-center   bg-light ">
+  <div class="row justify-content-center   ">
 
     <div class=" col-6">
-      <form @submit.prevent="onSubmit" class=" mt-5 border rounded p-3">
+      <form @submit.prevent="onSubmit" class="bg-light  mt-5 border rounded p-3">
         <h3 class=" text-center">Log in </h3>
         <div class="mb-3">
           <label for="email" class="form-label"> Email</label>

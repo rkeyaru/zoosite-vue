@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar  navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <RouterLink class="navbar-brand ms-2" to="/">Zoosite</RouterLink>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
@@ -8,7 +8,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ms-auto">
-          <RouterLink class="nav-link  btn-sm text-light  ms-2" to="dashboard">Dashboard</RouterLink>
+          <RouterLink class="nav-link btn-sm text-light  ms-2" to="dashboard">Dashboard</RouterLink>
          
 
           
