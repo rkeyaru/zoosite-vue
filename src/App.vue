@@ -1,13 +1,9 @@
 <script setup>
-import temp from './components/temp.vue'
-import Navbar from "./components/header.vue"
- 
- 
-   
-
+import Navbar from "./components/NavBar.vue"
 </script>
 
 <template>
-<Navbar />
-<RouterView> </RouterView>
+    <Navbar />
+    <RouterView> </RouterView>
+   
 </template>

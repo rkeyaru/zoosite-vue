@@ -1,32 +1,43 @@
-.dashboard1 { 
-    
-  height:200px;
-  
+.dashboard1 {
 
+  height: 200px;
   background: #488a99;
-  
-  
-}
-.dashboard2 { 
-  height:200px;   
-  
 
+
+}
+
+.dashboard2 {
+  height: 200px;
   background: #744ee8;
- 
+
 }
-.dashboard3 { 
-  height:200px;
-  
-  background:#ea6a47;
- 
+
+.dashboard3 {
+  height: 200px;
+  background: #ea6a47;
+
 }
-.forminput{
+
+.forminput {
   width: 50%;
-  text-align: center  ;
+  text-align: center;
 }
- 
-.dashboard { 
-  padding-top: 100px;;
+
+.dashboard {
+  padding-top: 100px;
+
   margin-top: 250px;
 }
+
+body {
+  counter-reset: Serial; 
+}
+
+tr td:first-child:before {
+  counter-increment: Serial;
+  content: counter(Serial);
+}
+.dashboard-style { 
+  border-radius: 2rem;
  
+}

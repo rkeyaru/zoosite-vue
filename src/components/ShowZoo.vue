@@ -1,3 +1,0 @@
-<template>
-    Show Zoos
-</template>

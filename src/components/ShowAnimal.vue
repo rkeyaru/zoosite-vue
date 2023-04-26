@@ -1,3 +1,0 @@
-<template>
-    Show Animals
-</template>
