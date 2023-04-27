@@ -25,16 +25,16 @@
 
 
     <div class="mt-5  ">
-        
-            <h3 class="text-center  text-secondary h1">Zoo Data</h3>
-       
-       
-            <button @click="type = 'Add'" type="button" class="btn   btn-primary" data-bs-toggle="modal"
-                data-bs-target="#exampleModal">
-                Add Zoo
-            </button>
 
-       
+        <h3 class="text-center  text-secondary h1">Zoo Data</h3>
+
+
+        <button @click="type = 'Add'" type="button" class="btn   btn-primary" data-bs-toggle="modal"
+            data-bs-target="#exampleModal">
+            Add Zoo
+        </button>
+
+
 
 
     </div>
@@ -42,46 +42,47 @@
 
 
 
-
-    <table class="table table-bordered mt-3 text-center caption-top">
-
-
-        <thead>
-            <tr>
-
-                <th v-for="i in ZHEAD">
-                    {{ i }}
-                </th>
+    <div class="table-responsive">
+        <table class="table table-bordered mt-3 text-center ">
 
 
-            </tr>
+            <thead>
+                <tr>
 
-        </thead>
-        <tbody>
-            <tr v-for="zoo in posts">
-                <td>
+                    <th v-for="i in ZHEAD">
+                        {{ i }}
+                    </th>
 
-                </td>
-                <td>
-                    {{ zoo.name }}
-                </td>
-                <td>
-                    {{ zoo.state }}
-                </td>
-                <td>
-                    {{ zoo.city }}
-                </td>
-                <td>
-                    {{ zoo.area }}
-                </td>
-                <td>
-                    <button data-bs-toggle="modal" data-bs-target="#exampleModal" @click="type = 'Edit', editZoo(zoo)"
-                        class="mx-1 btn btn-sm btn-warning  ">Edit</button>
-                    <button @click="deleteZoo(zoo.id)" class="mx-1 btn btn-sm btn-danger">Delete</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr v-for="zoo in posts">
+                    <td>
+
+                    </td>
+                    <td>
+                        {{ zoo.name }}
+                    </td>
+                    <td>
+                        {{ zoo.state }}
+                    </td>
+                    <td>
+                        {{ zoo.city }}
+                    </td>
+                    <td>
+                        {{ zoo.area }}
+                    </td>
+                    <td>
+                        <button data-bs-toggle="modal" data-bs-target="#exampleModal" @click="type = 'Edit', editZoo(zoo)"
+                            class="mx-1 btn btn-sm btn-warning  ">Edit</button>
+                        <button @click="deleteZoo(zoo.id)" class="mx-1 btn btn-sm btn-danger">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </template>
  
 <script setup>

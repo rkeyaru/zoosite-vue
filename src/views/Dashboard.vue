@@ -1,23 +1,23 @@
 
 <template>
-    <div class="container my-2 dashboard">
-        <div class="row row-cols-1 row-cols-md-3 justify-content-center ">
+    <div class="container  my-2 dashboard">
+        <div class="row gx-5 gy-5 row-cols-1 row-cols-md-3 justify-content-center ">
             <div class="col mb-3">
-                <div class="border border-dark dashboard-style bg-light p-sm-3 p-lg-5  text-center">
+                <div class="border  border-dark dashboard-style bg-light p-3  text-center">
                     <h1 class="text-light" id="zooCount"><img src="../assets/img/zoo.png" class="w-50 " alt="">
                     </h1>
                     <button @click="type = 'Zoo', show()" id="zoo" class="mt-2 btn btn-outline-primary border-secondary"> View Zoos</button>
                 </div>
             </div>
             <div class="col mb-3">
-                <div class="border border-dark dashboard-style bg-light p-sm-3 p-lg-5 text-center">
+                <div class="border border-dark dashboard-style bg-light p-3 text-center">
                     <h1 class="text-light" id="userCount"> <img src="../assets/img/user.png" class="w-50 " alt=""></h1>
                     <button @click="type = 'User', show()" id="user" class="mt-2 btn btn-outline-primary border-secondary">
                         View Users</button>
                 </div>
             </div>
             <div class="col mb-3">
-                <div class="border border-dark dashboard-style bg-light p-sm-3 p-lg-5  text-center ">
+                <div class="border border-dark dashboard-style bg-light p-3 text-center ">
                     <h1 class="text-light" id="animalCount">  <img src="../assets/img/panda.png" class="w-50" alt=""></h1>
                     <button @click="type = 'Animal', show()" id="animal" class="mt-2 btn btn-outline-primary border-secondary">View Animals</button>
                 </div>

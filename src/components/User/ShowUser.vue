@@ -28,7 +28,7 @@
             </div>
         </div>
     </div>
-  
+  <div class="table-responsive">
     <table class="table table-bordered mt-3  text-center">
         <thead>
             <tr>
@@ -64,6 +64,7 @@
             </tr>
         </tbody>
     </table>
+</div>
 </template>
 
 <script setup>
