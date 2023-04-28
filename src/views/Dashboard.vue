@@ -1,6 +1,6 @@
 
 <template>
-    <div class="container  my-2 dashboard">
+    <div class="container-sm w-75  my-2 dashboard">
         <div class="row gx-5 gy-5 row-cols-1 row-cols-md-3 justify-content-center ">
             <div class="col mb-3">
                 <div class="border  border-dark dashboard-style bg-light p-3  text-center">

@@ -38,7 +38,7 @@
 
         </div>
         <button type="submit" class="btn btn-primary rounded-pill">Submit</button>
-        {{ form }}
+       
     </form>
 </template>
 <script setup>
@@ -52,6 +52,7 @@ const emit = defineEmits()
 const props = defineProps(["form"])
 
 const zoos = ref(null)
+
 onMounted(getZoo)
 async function getZoo() {
     let url = "http://localhost:8080/test/zoosite/zoos"
@@ -65,9 +66,9 @@ async function onSubmit() {
 
 
 
-    let url = "http://localhost:8080/test/zoosite/animal/create"
+    let url = "http://localhost:8080/test/zoosite/animal/update"
     let val = null
-    const request = await axios.post(url, form.value).then(response => {
+    const request = await axios.post(url, props.form).then(response => {
 
         val = response.data
     }).catch(error => (error = error));
@@ -75,6 +76,7 @@ async function onSubmit() {
     $("#exampleModal").modal('hide');
     emit('show')
     $("#editAnimal")[0].reset()
+    emit("show")
 
 }
 </script>

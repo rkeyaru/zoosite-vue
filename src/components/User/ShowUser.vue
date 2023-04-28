@@ -4,7 +4,7 @@
 
    <h1 class="mt-5 text-center">User Data</h1>
     <!-- Button trigger modal -->
-    <button @click="type='Add'" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <button @click="type='Add' ,addUser()" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Add User
     </button>
 
@@ -18,10 +18,10 @@
                 </div>
                 <div class="modal-body">
                     <div v-if="type == 'Edit'">
-                        <EditUser :form="value"  />
+                        <EditUser :form="form" @show="showUser()"  />
                     </div>
                     <div v-if="type == 'Add'">
-                        <AddUser @show="showUser()" />
+                        <AddUser :form="form" @show="showUser()" />
                     </div>
                 </div>
                
@@ -79,7 +79,7 @@ const value  = ref({})
 const UHEAD = ["S.No.", "First Name", "Last Name", "email", "Operation"]
  
 let posts = ref([])
-let values  = ref({})
+let form  = ref({})
 async function showUser() {
     let val = null
     await axios.get(HOST + 'users').then((response) => {
@@ -95,8 +95,28 @@ async function showUser() {
 onMounted(showUser)
 
 
+
+function addUser() {
+    form.value = {
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: ""
+    }
+    console.log(form.value)
+    console.log("Emptied successfully")
+    try {
+        $("#addUser")[0].reset()
+    }
+    catch {
+
+    }
+}
 function editUser(user) {
-  value.value = user 
+    console.log(user)
+    for(let i in user) { 
+        form.value[i] = user[i]
+    }
 }
 async function deleteUser(user) {
     let cfm = confirm("Do you really want to delete this zoo")

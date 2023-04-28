@@ -49,9 +49,11 @@ import { onMounted, ref } from "vue"
 const picker = ref("Male")
 
 const emit = defineEmits()
-let form = ref({ name: "", gender: "", sname: "", zoo: "" })
-
+ 
 const zoos = ref(null)
+const props = defineProps( { 
+    form:Object
+})
 onMounted(getZoo)
 async function getZoo() {
     let url = "http://localhost:8080/test/zoosite/zoos"
@@ -67,7 +69,7 @@ async function onSubmit() {
 
     let url = "http://localhost:8080/test/zoosite/animal/create"
     let val = null
-    const request = await axios.post(url, form).then(response => {
+    const request = await axios.post(url, props.form).then(response => {
 
         val = response.data
     }).catch(error => (error = error));

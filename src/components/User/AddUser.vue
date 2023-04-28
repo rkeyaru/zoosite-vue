@@ -7,20 +7,21 @@
         </div>
         <div class="mb-3">
             <label for="lastName" class="form-label">Last Name</label>
-            <input type="text" v-model="form.lastName" class="form-control" id="lastName">
+            <input type="text" v-model="form.lastName"   class="form-control" id="lastName">
 
         </div>
         <div class="mb-3">
             <label for="email" class="form-label"> Email</label>
-            <input type="email" v-model="form.email" class="form-control" id="email">
+            <input type="email" v-model="form.email"  class="form-control" id="email">
 
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Password</label>
-            <input type="password" v-model="form.password" class="form-control" id="password">
+            <input type="password" v-model="form.password"  class="form-control" id="password">
 
         </div>
         <button type="submit" class="btn btn-primary rounded-pill">Submit</button>
+    
     </form>
 </template>
 <script setup>
@@ -30,14 +31,16 @@ import { ref } from "vue"
 
 
 const emit  = defineEmits()
-let form = ref({ firstName: "", lastName: "", email: "", password: "" })
+const props = defineProps( { 
+    form:Object
+})
 async function onSubmit() {
 
 
     
     let url = "http://localhost:8080/test/zoosite/user/create"
     let val = null
-    const request = await axios.post(url, form.value).then(response => {
+    const request = await axios.post(url, props.form).then(response => {
 
         val = response.data
     }).catch(error => (error = error));
@@ -45,9 +48,7 @@ async function onSubmit() {
     $("#exampleModal").modal('hide');
     $("#addUser")[0].reset()
     emit('show')
-    for(let i in form.value) { 
-        form.value[i] = null
-    }
+  
 
 }
 </script>

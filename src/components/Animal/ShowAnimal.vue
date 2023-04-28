@@ -12,10 +12,10 @@
                 </div>
                 <div class="modal-body">
                     <div v-if="type == 'Edit'">
-                        <EditAnimal :form="form" />
+                        <EditAnimal :form="form" @show="showAnimals()" />
                     </div>
                     <div v-if="type == 'Add'">
-                        <AddAnimal @show="showAnimals()" />
+                        <AddAnimal :form="form" @show="showAnimals()" />
                     </div>
                 </div>
 
@@ -113,9 +113,25 @@ function showAnimals() {
 
 onMounted(showAnimals)
 
+function addAnimal() { 
+    form.value = { 
+        name:"",
+        gender:"",
+        sname:"",
+        zoo:""
+    }
+    try {
+        $("#addAnimal")[0].reset()
+    }
+    catch {
 
+    }
+}
 function editAnimal(animal) {
-    form.value = animal
+    console.log(animal)
+    for(let i in animal) { 
+        form.value[i] = animal[i]
+    }
 }
 async function deleteAnimal(id) {
     let cfm = confirm("Do you really want to delete this animal?") 
