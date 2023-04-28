@@ -2,7 +2,7 @@
    
    
 
-   <h1 class="mt-5 text-center">User Data</h1>
+   <h1 class="mt-5 text-center bg-secondary">User Data</h1>
     <!-- Button trigger modal -->
     <button @click="type='Add' ,addUser()" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Add User
