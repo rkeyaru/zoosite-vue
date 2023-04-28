@@ -1,7 +1,7 @@
 <template>
     <!-- Button trigger modal -->
 
-
+     
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel">
         <div class="modal-dialog">
@@ -12,11 +12,13 @@
                 </div>
                 <div class="modal-body">
                     <div v-if="type == 'Edit'">
-                        <EditZoo :form="form" />
+                        <EditZoo v-if="ok" :form="form" />
                     </div>
-                    <div v-if="type == 'Add'">
-                        <AddZoo @show="showZoo()" />
+                    <div v-if="type == 'Add'" >
+                        <AddZoo v-if="ok"   :form="null" @show="showZoo()" />
+
                     </div>
+                  
                 </div>
 
             </div>
@@ -29,7 +31,7 @@
         <h3 class="text-center  text-secondary h1">Zoo Data</h3>
 
 
-        <button @click="type = 'Add'" type="button" class="btn   btn-primary" data-bs-toggle="modal"
+        <button @click="type = 'Add' " type="button" class="btn   btn-primary" data-bs-toggle="modal"
             data-bs-target="#exampleModal">
             Add Zoo
         </button>
@@ -74,10 +76,10 @@
                     <td>
                         {{ zoo.area }}
                     </td>
-                    <td>
+                    <td >
                         <button data-bs-toggle="modal" data-bs-target="#exampleModal" @click="type = 'Edit', editZoo(zoo)"
-                            class="mx-1 btn btn-sm btn-warning  ">Edit</button>
-                        <button @click="deleteZoo(zoo.id)" class="mx-1 btn btn-sm btn-danger">Delete</button>
+                            class="m-1 btn btn-sm btn-primary ">Edit</button>
+                        <button @click="deleteZoo(zoo.id)" class="m-1 btn btn-sm  btn-primary">Delete</button>
                     </td>
                 </tr>
             </tbody>
@@ -92,7 +94,7 @@ import AddZoo from "./AddZoo.vue"
 import EditZoo from "./EditZoo.vue"
 
 
-
+const ok = ref(true)
 
 
 const type = ref("")
@@ -118,7 +120,7 @@ function editZoo(zoo) {
     form.value = zoo
 }
 async function deleteZoo(id) {
-    let cfm = confirm("Do you really want to delete thsi zoo")
+    let cfm = confirm("Do you really want to delete this zoo")
     if (!cfm) {
         return false
     }

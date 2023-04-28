@@ -76,8 +76,8 @@
                     </td>
                     <td>
                         <button data-bs-toggle="modal" data-bs-target="#exampleModal"
-                            @click="type = 'Edit', editAnimal(zoo)" class="mx-1 btn btn-sm btn-warning  ">Edit</button>
-                        <button @click="deleteAnimal(animal.id)" class="mx-1 btn btn-sm btn-danger">Delete</button>
+                            @click="type = 'Edit', editAnimal(animal)" class="m-1  btn btn-sm btn-primary ">Edit</button>
+                        <button @click="deleteAnimal(animal.id)" class="m-1  btn btn-sm btn-primary">Delete</button>
                     </td>
                 </tr>
             </tbody>

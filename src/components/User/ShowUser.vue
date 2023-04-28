@@ -55,8 +55,8 @@
                     {{ user.email }}
                 </td>
                 <td>
-                    <button  data-bs-toggle="modal" data-bs-target="#exampleModal" @click="editUser(user) , type='Edit'" class="mx-1 btn btn-sm btn-warning">Edit</button>
-                    <button @click="deleteUser(user.userId)" class="mx-1 btn btn-sm btn-danger">Delete</button>
+                    <button  data-bs-toggle="modal" data-bs-target="#exampleModal" @click="editUser(user) , type='Edit'" class="m-1 btn btn-sm btn-primary">Edit</button>
+                    <button @click="deleteUser(user.userId)" class="m-1 btn btn-sm btn-primary">Delete</button>
                 </td>
 
 

@@ -21,13 +21,26 @@
 
         </div>
         <button type="submit" class="btn btn-primary rounded-pill">Submit</button>
+        {{ form }}
     </form>
 </template>
 <script setup>
 import axios from "axios";
-import { ref } from "vue"
-const emit  = defineEmits()
-let form = ref({ name: "", state: "", city: "", area: "" })
+import { onMounted, ref } from "vue"
+const emit = defineEmits()
+
+
+const props = defineProps({ 
+    form:Object
+})
+let form = { 
+    name:"",
+    gender:"",
+    sname:"",
+    zoo:"",
+
+}
+onMounted(() => (console.log("Mouneted from start")))
 async function onSubmit() {
 
 
@@ -42,6 +55,9 @@ async function onSubmit() {
     $("#exampleModal").modal('hide');
     emit('show')
     $("#addZoo")[0].reset()
+    for (let i in form.value) {
+        form.value[i] = null
+    }
 
 }
 </script>

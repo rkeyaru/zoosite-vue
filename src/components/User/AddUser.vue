@@ -45,5 +45,9 @@ async function onSubmit() {
     $("#exampleModal").modal('hide');
     $("#addUser")[0].reset()
     emit('show')
+    for(let i in form.value) { 
+        form.value[i] = null
+    }
+
 }
 </script>
