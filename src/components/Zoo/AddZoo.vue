@@ -21,25 +21,17 @@
 
         </div>
         <button type="submit" class="btn btn-primary rounded-pill">Submit</button>
-        {{ form }}
-    </form>
+     </form>
 </template>
 <script setup>
 import axios from "axios";
 import { onMounted, ref } from "vue"
 const emit = defineEmits()
 
-
 const props = defineProps({ 
     form:Object
 })
-let form = { 
-    name:"",
-    gender:"",
-    sname:"",
-    zoo:"",
 
-}
 onMounted(() => (console.log("Mouneted from start")))
 async function onSubmit() {
 
@@ -47,7 +39,7 @@ async function onSubmit() {
 
     let url = "http://localhost:8080/test/zoosite/zoo/create"
     let val = null
-    const request = await axios.post(url, form.value).then(response => {
+    const request = await axios.post(url, props.form).then(response => {
 
         val = response.data
     }).catch(error => (error = error));
@@ -55,9 +47,6 @@ async function onSubmit() {
     $("#exampleModal").modal('hide');
     emit('show')
     $("#addZoo")[0].reset()
-    for (let i in form.value) {
-        form.value[i] = null
-    }
-
+  
 }
 </script>

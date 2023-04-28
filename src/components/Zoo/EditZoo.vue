@@ -26,6 +26,8 @@
   </template>
   <script setup>
   import axios from "axios"
+  const emit = defineEmits()
+
   const props = defineProps(
     {
       form: Object
@@ -44,6 +46,6 @@
     alert("updated Successfully")
     $("#exampleModal").modal('hide')
    
-  
+    emit('show')
   }
   </script>

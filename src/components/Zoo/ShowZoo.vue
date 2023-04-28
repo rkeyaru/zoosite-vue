@@ -1,7 +1,7 @@
 <template>
     <!-- Button trigger modal -->
 
-     
+
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel">
         <div class="modal-dialog">
@@ -12,26 +12,27 @@
                 </div>
                 <div class="modal-body">
                     <div v-if="type == 'Edit'">
-                        <EditZoo v-if="ok" :form="form" />
+                        <EditZoo v-if="ok" :form="form"  @show="showZoo()" />
                     </div>
-                    <div v-if="type == 'Add'" >
-                        <AddZoo v-if="ok"   :form="null" @show="showZoo()" />
+                    <div v-if="type == 'Add'">
+                        <AddZoo v-if="ok" :form="form" @show="showZoo()" />
+
 
                     </div>
-                  
+
                 </div>
 
             </div>
         </div>
     </div>
 
-
+   
     <div class="mt-5  ">
 
         <h3 class="text-center  text-secondary h1">Zoo Data</h3>
 
 
-        <button @click="type = 'Add' " type="button" class="btn   btn-primary" data-bs-toggle="modal"
+        <button @click="type = 'Add', addZoo()" type="button" class="btn   btn-primary" data-bs-toggle="modal"
             data-bs-target="#exampleModal">
             Add Zoo
         </button>
@@ -60,6 +61,7 @@
 
             </thead>
             <tbody>
+          
                 <tr v-for="zoo in posts">
                     <td>
 
@@ -76,7 +78,7 @@
                     <td>
                         {{ zoo.area }}
                     </td>
-                    <td >
+                    <td>
                         <button data-bs-toggle="modal" data-bs-target="#exampleModal" @click="type = 'Edit', editZoo(zoo)"
                             class="m-1 btn btn-sm btn-primary ">Edit</button>
                         <button @click="deleteZoo(zoo.id)" class="m-1 btn btn-sm  btn-primary">Delete</button>
@@ -115,9 +117,26 @@ function showZoo() {
 
 onMounted(showZoo)
 
+function addZoo() {
+    form.value = {
+        name: "",
+        state: "",
+        city: "",
+        area: ""
+    }
+    console.log("Emptied successfully")
+    try {
+        $("#addZoo")[0].reset()
+    }
+    catch {
 
+    }
+}
 function editZoo(zoo) {
-    form.value = zoo
+    console.log(zoo)
+    for(let i in zoo) { 
+        form.value[i] = zoo[i]
+    }
 }
 async function deleteZoo(id) {
     let cfm = confirm("Do you really want to delete this zoo")
@@ -141,5 +160,6 @@ async function deleteZoo(id) {
 
 
 defineExpose({ "show": showZoo })
+
 
 </script>   
