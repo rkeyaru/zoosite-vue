@@ -29,7 +29,7 @@
             <input type="password" v-model="form.password" class="form-control" id="password">
 
           </div>
-          <button type="submit" class="btn btn-primary rounded-pill mb-3">Submit</button>
+          <button type="submit" class="btn btn-primary rounded mb-3">Submit</button>
         </form>
       </div>
     </div>
@@ -66,6 +66,6 @@ async function onSubmit() {
 
 <style scoped>
 input {
-  border-radius: 2rem;
+  border-radius: .5rem ;
 }
 </style>
