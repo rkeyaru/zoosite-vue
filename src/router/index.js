@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import SignUp from "../views/SignUp.vue"
 import LogIn from "../views/LogIn.vue"
 import Dashboard from "../views/Dashboard.vue"
+import Terms from "../views/Terms.vue"
  
  const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -10,7 +11,9 @@ import Dashboard from "../views/Dashboard.vue"
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      components:{
+        default:HomeView
+      }
     },
     {
       path: '/signup',
@@ -26,6 +29,11 @@ import Dashboard from "../views/Dashboard.vue"
       path: '/dashboard',
       name: 'dashboard',
       component: Dashboard
+    },
+    {
+      path: '/terms',
+      name: 'terms-conditions',
+      component: Terms
     } 
   ]
 })
