@@ -12,7 +12,7 @@
                 </div>
                 <div class="modal-body">
                     <div v-if="type == 'Edit'">
-                        <EditZoo v-if="ok" :form="form"  @show="showZoo()" />
+                        <EditZoo v-if="ok" :form="form" @show="showZoo()" />
                     </div>
                     <div v-if="type == 'Add'">
                         <AddZoo v-if="ok" :form="form" @show="showZoo()" />
@@ -26,16 +26,20 @@
         </div>
     </div>
 
-   
+
     <div class="mt-5  ">
 
         <h3 class="text-center  text-secondary h1">Zoo Data</h3>
 
+        
+            
+       
 
-        <button @click="type = 'Add', addZoo()" type="button" class="btn   btn-primary" data-bs-toggle="modal"
-            data-bs-target="#exampleModal">
-            Add Zoo
-        </button>
+            <button @click="type = 'Add', addZoo()" type="button" class="btn      btn-primary" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">
+                Add Zoo
+            </button>
+       
 
 
 
@@ -61,7 +65,7 @@
 
             </thead>
             <tbody>
-          
+
                 <tr v-for="zoo in posts">
                     <td>
 
@@ -94,6 +98,7 @@ import { ref, onMounted, onUpdated, onActivated, onBeforeUpdate } from 'vue'
 import axios from 'axios'
 import AddZoo from "./AddZoo.vue"
 import EditZoo from "./EditZoo.vue"
+import { getData } from '../fetch'
 
 
 const ok = ref(true)
@@ -106,15 +111,19 @@ const form = ref({})
 
 let posts = ref([])
 let HOST = "http://localhost:8080/test/zoosite/"
-function showZoo() {
+// function showZoo() {
 
-    axios.get('http://localhost:8080/test/zoosite/zoos').then((response) => {
-        posts.value = response.data
-    })
-    console.log("Latest Data")
+//     axios.get('http://localhost:8080/test/zoosite/zoos').then((response) => {
+//         posts.value = response.data
+//     })
+//     console.log("Latest Data")
+// }
+
+async function showZoo() {
+
+    const data = await getData("zoos")
+    posts.value = data.value
 }
-
-
 onMounted(showZoo)
 
 function addZoo() {
@@ -134,7 +143,7 @@ function addZoo() {
 }
 function editZoo(zoo) {
     console.log(zoo)
-    for(let i in zoo) { 
+    for (let i in zoo) {
         form.value[i] = zoo[i]
     }
 }

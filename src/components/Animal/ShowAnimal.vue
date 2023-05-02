@@ -28,12 +28,12 @@
 
         <h3 class="text-center  text-secondary h1">Animal Data</h3>
 
-
-        <button @click="type = 'Add'" type="button" class="btn   btn-primary" data-bs-toggle="modal"
-            data-bs-target="#exampleModal">
-            Add Animal
-        </button>
-
+       
+            <button @click="type = 'Add', addAnimal()" type="button" class="btn   btn-primary" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">
+                Add Animal
+            </button>
+         
 
 
 
@@ -90,6 +90,7 @@ import { ref, onMounted, onUpdated, onActivated, onBeforeUpdate } from 'vue'
 import axios from 'axios'
 import AddAnimal from "./AddAnimal.vue"
 import EditAnimal from "./EditAnimal.vue"
+import { getData } from '../fetch'
 
 
 
@@ -102,23 +103,27 @@ const form = ref({})
 
 let posts = ref([])
 let HOST = "http://localhost:8080/test/zoosite/"
-function showAnimals() {
+// function showAnimals() {
 
-    axios.get(HOST + 'animals').then((response) => {
-        posts.value = response.data
-    })
-    console.log("Latest Data")
+//     axios.get(HOST + 'animals').then((response) => {
+//         posts.value = response.data
+//     })
+//     console.log("Latest Data")
+// }
+async function showAnimals() {
+
+    const data = await getData("animals")
+    posts.value = data.value
 }
-
 
 onMounted(showAnimals)
 
-function addAnimal() { 
-    form.value = { 
-        name:"",
-        gender:"",
-        sname:"",
-        zoo:""
+function addAnimal() {
+    form.value = {
+        name: "",
+        gender: "",
+        sname: "",
+        zoo: ""
     }
     try {
         $("#addAnimal")[0].reset()
@@ -129,12 +134,12 @@ function addAnimal() {
 }
 function editAnimal(animal) {
     console.log(animal)
-    for(let i in animal) { 
+    for (let i in animal) {
         form.value[i] = animal[i]
     }
 }
 async function deleteAnimal(id) {
-    let cfm = confirm("Do you really want to delete this animal?") 
+    let cfm = confirm("Do you really want to delete this animal?")
     if (!cfm) {
         return false
     }

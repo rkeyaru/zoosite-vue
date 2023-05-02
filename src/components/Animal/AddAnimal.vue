@@ -15,7 +15,7 @@
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="radio" value="Female" v-model="form.gender" name="flexRadioDefault"
-                    id="flexRadioDefault2" checked>
+                    id="flexRadioDefault2" >
                 <label class="form-check-label" for="flexRadioDefault2">
                     Female
                 </label>
@@ -38,45 +38,49 @@
 
         </div>
         <button type="submit" class="btn btn-primary rounded-pill">Submit</button>
-        {{ form }}
+        
     </form>
 </template>
 <script setup>
 import axios from "axios";
 import { onMounted, ref } from "vue"
-
+import {  getData, saveOrUpdate } from "../fetch"
 
 const picker = ref("Male")
 
 const emit = defineEmits()
- 
+
 const zoos = ref(null)
-const props = defineProps( { 
-    form:Object
+const props = defineProps({
+    form: Object
 })
 onMounted(getZoo)
-async function getZoo() {
-    let url = "http://localhost:8080/test/zoosite/zoos"
-    let val = null
-    const request = await axios.get(url).then(response => {
+// async function getZoo() {
+//     let url = "http://localhost:8080/test/zoosite/zoos"
+//     let val = null
+//     const request = await axios.get(url).then(response => {
 
-        zoos.value = response.data
-    }).catch(error => (error = error));
+//         zoos.value = response.data
+//     }).catch(error => (error = error));
+// }
+async function getZoo() {
+     zoos.value = (await getData("zoos")).value
 }
 async function onSubmit() {
 
 
 
-    let url = "http://localhost:8080/test/zoosite/animal/create"
-    let val = null
-    const request = await axios.post(url, props.form).then(response => {
+    
+    // const request = await axios.post(url, props.form).then(response => {
 
-        val = response.data
-    }).catch(error => (error = error));
-    alert(val)
+    //     val = response.data
+    // }).catch(error => (error = error));
+    
+    saveOrUpdate("animal/create",props.form)
+    alert("Animal added successfully")
     $("#exampleModal").modal('hide');
     emit('show')
     $("#addAnimal")[0].reset()
-    
+
 }
 </script>

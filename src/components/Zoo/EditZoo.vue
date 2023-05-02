@@ -26,6 +26,7 @@
   </template>
   <script setup>
   import axios from "axios"
+import { saveOrUpdate } from "../fetch";
   const emit = defineEmits()
 
   const props = defineProps(
@@ -36,13 +37,13 @@
   
   
   async function onSubmit() {
-    let url = "http://localhost:8080/test/zoosite/zoo/update"
-   
-    let val = null
-    const request = await axios.post(url, props.form).then(response => {
+    
+ 
+    // const request = await axios.post(url, props.form).then(response => {
   
-      val = response.data
-    }) 
+    //   val = response.data
+    // }) 
+    saveOrUpdate("zoo/update",props.form)
     alert("updated Successfully")
     $("#exampleModal").modal('hide')
    

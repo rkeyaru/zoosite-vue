@@ -15,7 +15,7 @@
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="radio" value="Female" v-model="form.gender" name="flexRadioDefault"
-                    id="flexRadioDefault2" >
+                    id="flexRadioDefault2">
                 <label class="form-check-label" for="flexRadioDefault2">
                     Female
                 </label>
@@ -37,14 +37,16 @@
             </select>
 
         </div>
+      
         <button type="submit" class="btn btn-primary rounded-pill">Submit</button>
-       
+
     </form>
 </template>
 <script setup>
 import axios from "axios";
 import { onMounted, ref } from "vue"
-
+import { saveOrUpdate } from "../fetch";
+import { getData } from "../fetch";
 
 const picker = ref("Male")
 
@@ -56,23 +58,25 @@ const zoos = ref(null)
 onMounted(getZoo)
 async function getZoo() {
     let url = "http://localhost:8080/test/zoosite/zoos"
-    let val = null
-    const request = await axios.get(url, props.form.value).then(response => {
 
-        zoos.value = response.data
-    }).catch(error => (error = error));
+    zoos.value = (await getData("zoos")).value
+    console.log(zoos.value)
+    // const request = await axios.get(url, props.form.value).then(response => {
+
+    //     zoos.value = response.data
+    // }).catch(error => (error = error));
 }
 async function onSubmit() {
 
 
 
-    let url = "http://localhost:8080/test/zoosite/animal/update"
-    let val = null
-    const request = await axios.post(url, props.form).then(response => {
+  
+    // const request = await axios.post(url, props.form).then(response => {
 
-        val = response.data
-    }).catch(error => (error = error));
-    alert(val)
+    //     val = response.data
+    // }).catch(error => (error = error));
+    saveOrUpdate("animal/update", props.form)
+    alert("Animal edited successfully")
     $("#exampleModal").modal('hide');
     emit('show')
     $("#editAnimal")[0].reset()

@@ -16,16 +16,17 @@
       <input type="email" v-model="form.email" class="form-control" id="email">
 
     </div>
-    <div class="mb-3">
+    <!-- <div class="mb-3">
       <label for="password" class="form-label">Password</label>
       <input type="password" v-model="form.password" class="form-control" id="password">
 
-    </div>
+    </div> -->
     <button type="submit" class="btn btn-primary rounded-pill">Submit</button>
   </form>
 </template>
 <script setup>
 import axios from "axios"
+import { saveOrUpdate } from "../fetch";
 const emit = defineEmits()
 const props = defineProps(
   {
@@ -35,13 +36,10 @@ const props = defineProps(
 
 
 async function onSubmit() {
-  let url = "http://localhost:8080/test/zoosite/user/update"
+  
  
   let val = null
-  const request = await axios.post(url, props.form).then(response => {
-
-    val = response.data
-  }) 
+  await saveOrUpdate("user/update",props.form)
   alert("updated Successfully")
   $("#exampleModal").modal('hide')
   emit('show')

@@ -45,7 +45,7 @@ async function onSubmit() {
 
 
 
-   if (val == "") {
+  if (val == "") {
     alert("Wrong email or password");
   }
   else {
@@ -55,10 +55,16 @@ async function onSubmit() {
 
 }
 
+
+
+
+
+
+
 </script>
 
 <style scoped>
 input {
-  border-radius: 2rem;
+  border-radius: .5rem;
 }
 </style>

@@ -25,9 +25,9 @@
     </form>
 </template>
 <script setup>
-import axios from "axios";
-import { ref } from "vue"
 
+import { ref } from "vue"
+import { saveOrUpdate } from "../fetch"
 
 
 const emit  = defineEmits()
@@ -38,13 +38,15 @@ async function onSubmit() {
 
 
     
-    let url = "http://localhost:8080/test/zoosite/user/create"
-    let val = null
-    const request = await axios.post(url, props.form).then(response => {
+    
+    // const request = await axios.post(url, props.form).then(response => {
 
-        val = response.data
-    }).catch(error => (error = error));
-    alert(val)
+    //     val = response.data
+    // }).catch(error => (error = error));
+    
+
+    const data = await saveOrUpdate("user/create", props.form)
+    alert("User Added successfully")
     $("#exampleModal").modal('hide');
     $("#addUser")[0].reset()
     emit('show')
